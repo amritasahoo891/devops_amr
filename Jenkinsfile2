@@ -23,11 +23,11 @@ try{
                   message: "Job - ${env.JOB_NAME} successfully completed, Build URL - ${env.BUILD_URL}"
                   
             mail bcc: '', 
-                 body: 'The App is deployed successfully', 
+                 body: 'Job - ${env.JOB_NAME} successfully completed, Build URL - ${env.BUILD_URL}', 
                  cc: '',
                  from: 'amruamrita@gmail.com',
                  replyTo: '',
-                 subject: 'build status of App',
+                 subject: 'build status of ${env.JOB_NAME}',
                  to: 'amritasahoo891@gmail.com'
         }
 
