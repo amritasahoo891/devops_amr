@@ -1,0 +1,42 @@
+try{
+    node{
+        properties([parameters([choice(choices: ['master', 'feature-1', 'feature-2'], description: 'choose the branch to build', name: 'gitBranch')]), pipelineTriggers([githubPush()])])
+        stage("Git-Checkout"){
+            
+            git credentialsId: 'github', url: 'https://github.com/amritasahoo891/devops_amr'   
+            
+        }
+        stage("Maven Build"){
+            sh 'mvn clean package'
+        }
+        
+        stage("Deploy-to-Tomcat"){
+            sh ' mv target/*.war target/rudra.war '
+            sshagent(['tomcat_aws']) {
+                sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.28.148 rm -rf /opt/tomcat8/webapps/rudra*'
+                sh 'scp target/rudra.war ec2-user@172.31.28.148:/opt/tomcat8/webapps/'
+                sh 'ssh ec2-user@172.31.28.148 sudo service tomcat restart'
+            }
+            
+            slackSend channel: '#build_status',
+                  color: 'good',
+                  message: "Job - ${env.JOB_NAME} successfully completed, Build URL - ${env.BUILD_URL}"
+                  
+            mail bcc: '', 
+                 body: 'The App is deployed successfully', 
+                 cc: '',
+                 from: 'amruamrita@gmail.com',
+                 replyTo: '',
+                 subject: 'build status of App',
+                 to: 'amritasahoo891@gmail.com'
+        }
+
+    }
+}    
+    catch(error){
+         slackSend channel: '#build_status',
+                  color: 'danger',
+                  message: "Job - ${env.JOB_NAME} successfully completed, Build URL - ${env.BUILD_URL}" 
+        error 'some problems'
+        
+    }
