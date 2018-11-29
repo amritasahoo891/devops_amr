@@ -23,7 +23,10 @@
 		</dependency>
 	
 	</dependencies>
-	
+	<distributionManagement>
+		http://172.31.24.115:8081/repository/maven-releases/
+			</distributionManagement>
+
 <build>
     <plugins>
         <plugin>
