@@ -24,8 +24,15 @@
 	
 	</dependencies>
 	<distributionManagement>
-	http://172.31.24.115:8081/repository/maven-release
-	http://172.31.24.115:8081/repository/maven-snapshots/
+		<repository>
+		    <id>nexus</id>
+		    <url>http://172.31.24.115:8081/repository/maven-release/</url>
+		 </repository>
+		
+		<snapshotRepository>
+		    <id>nexus</id>
+		    <url>http://172.31.24.115:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
 	</distributionManagement>
 
 <build>
