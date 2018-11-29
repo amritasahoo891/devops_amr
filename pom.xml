@@ -24,6 +24,13 @@
 	
 	</dependencies>
 	<distributionManagement>
+		<servers>
+  			<server>
+      				<id>nexus</id>
+      				<username>root</username>
+      				<password>root</password>
+    			</server>
+  		</servers>
 		<repository>
 		    <id>nexus</id>
 		    <url>http://172.31.24.115:8081/repository/maven-release/</url>
@@ -34,6 +41,7 @@
 		    <url>http://172.31.24.115:8081/repository/maven-snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
+ 
 
 <build>
     <plugins>
