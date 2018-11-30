@@ -28,12 +28,12 @@
       				
 		<repository>
 		    <id>nexus</id>
-		    <url>http://13.233.214.198:8081/repository/maven-releases//</url>
+		    <url>http://13.233.214.198:8081/repository/devops_amr_release/</url>
 		 </repository>
 		
 		<snapshotRepository>
 		    <id>nexus</id>
-		    <url>http://13.233.214.198:8081/repository/maven-snapshots/</url>
+		    <url>http://13.233.214.198:8081/repository/devops_amr_snapshots/</url>
 		    </snapshotRepository>
 	</distributionManagement>
  
