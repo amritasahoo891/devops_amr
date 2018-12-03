@@ -26,13 +26,13 @@
 	</dependencies>
 	<distributionManagement>
 		 <snapshotRepository>
-		    <id>nexus</id>
-		    <url>http://13.233.214.198:8081/repository/devops_amr_snapshots/</url>
+		    <id>maven-snapshots</id>
+		    <url>http://172.31.18.31:8081/repository/maven-snapshots/</url>
 		 </snapshotRepository>
 		
 		<repository>
-		    <id>nexus</id>
-		    <url>http://13.233.214.198:8081/repository/devops_amr_release/</url>
+		    <id>maven-releases</id>
+		    <url>http://172.31.18.31:8081/repository/maven-releases/</url>
 		</repository>
   	</distributionManagement>
 	
